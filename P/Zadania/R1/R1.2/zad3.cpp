@@ -2,5 +2,6 @@
 using namespace std;
 
 int main(){
-    cout<<"Napis zawierajacy rozne dziwne znaczki // \\ $ & %";
+    cout<<"Napis zawierajacy rozne dziwne znaczki // \\\\ $ & %"<<endl;
+    cout<<"Ala \"ma\" kota"<<endl;
 }
