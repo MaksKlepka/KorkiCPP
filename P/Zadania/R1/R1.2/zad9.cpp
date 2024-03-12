@@ -1,10 +1,11 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int main()
 {
-    int liczbaujemna;
-    cout<<"Podaj liczbe ujemna: "; cin>>liczbaujemna;
-    cout<<"Twoja liczba zpierwiastkowana to: ";
+    double liczba;
+    cout<<"Podaj liczbe: "; cin>>liczba;
+    cout<<"Twoja liczba zpierwiastkowana to: "<<sqrt(liczba)<<endl;
     return 0;
 }
