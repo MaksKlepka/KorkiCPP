@@ -21,10 +21,11 @@ int main(){
     else if(liczba2>liczba3){
         if(liczba2>liczba3){
             cout<<"Najwieksza liczba to: "<<liczba2<<endl;}
-        else if(liczba3>liczba2){
-            cout<<"Najwieksza liczba to: "<<liczba3<<endl;}
-        else if(liczba2==liczba3){
+        else if(liczba3==liczba2){
             cout<<"Najwieksze liczby to: "<<liczba2<<" i "<<liczba3<<endl;}
+        else {
+            cout<<"Najwieksza liczba to: "<<liczba3<<endl;
+            }
     }
 
     else{
