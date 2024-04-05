@@ -3,11 +3,11 @@ using namespace std;
 
 int main(){
     int n, m, k;
-    cout<<"Podaj pierwsza liczbe dodatnia: ";
+    cout<<"Podaj pierwsza liczbe dodatnia : "; //multiplication
     cin>>n;
-    cout<<"Podaj druga liczbe dodatnia: ";
+    cout<<"Podaj druga liczbe dodatnia: "; //low/high
     cin>>m;
-    cout<<"Podaj trzecia liczbe dodatnia: ";
+    cout<<"Podaj trzecia liczbe dodatnia: "; //low/high
     cin>>k;
     int i = 1;
     int x = 0;
