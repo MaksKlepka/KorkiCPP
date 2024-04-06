@@ -4,12 +4,13 @@ using namespace std;
 
 int main(){
     int w;
-    double a, b, c, h, p, s; 
+    double p;    
     cout<<"Jak chcesz obliczyc pole trojkata?"<<endl;
     cout<<"1 - Z podstawy i wysokosci"<<endl;
     cout<<"2 - Z dlugosci trzech bokow"<<endl;
     cin>>w;
     if(w==1){
+        double b,h;
         cout<<"Podaj podstawe trojkata: ";
         cin>>b;
         cout<<"Podaj wysokocs: ";
@@ -17,6 +18,7 @@ int main(){
         p=b*h/2;
     }
     else{
+        double a,b,c,s;
         cout<<"Podaj pierwszy bok: ";
         cin>>a;
         cout<<"Podaj drugi bok: ";
