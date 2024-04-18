@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-    int n;
+    unsigned int n;
 
     cout<<"Podaj liczbe nieujemna: ";
     cin>>n;
