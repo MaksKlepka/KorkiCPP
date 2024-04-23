@@ -4,10 +4,10 @@ using namespace std;
 int n;
 
 int szukaj(){
-    int m=n;
-    for(int k=2;n<=k;k++){
+    int m=0;
+    for(int k=2;k<=n;k++){
         m=n/k;
-        cout<<k; //find out how to do this, something to do with n/k
+        cout<<m; //find out how to do this, something to do with n/k
     }
     return 0;
 }
