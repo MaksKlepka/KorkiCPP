@@ -4,12 +4,13 @@ using namespace std;
 int n;
 
 int szukaj(){
-    int m=0;
-    for(int k=2;k<=n;k++){
-        m=n/k;
-        cout<<m; //find out how to do this, something to do with n/k
-    }
-    return 0;
+
+int k=2;
+
+for(int i;n/k<n;k++){
+//Nie rozumiem za bardzo jak ta for loop wyrobic
+}
+    return k;
 }
 
 int main(){
