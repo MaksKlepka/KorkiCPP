@@ -7,9 +7,9 @@ int main(){
     cout<<"Podaj liczbe nieujemna i calkowita: ";
     cin>>n;
     for(unsigned int i=2;i<=n;i++){
-        pom=fib1;
-        fib1=fib2+fib1;
-        fib2=pom;
+        pom=fib2;
+        fib2=fib1+fib2;
+        fib1=pom;        
     }
     cout<<"element ciagu Fibonacciego o indeksie n: "<<fib1;
     return 0;
