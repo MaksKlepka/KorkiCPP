@@ -1,20 +1,18 @@
 #include <iostream>
 using namespace std;
 
-int n;
+int szukaj(int n){
 
-int szukaj(){
-
-int k=2;
-
-for(int i;n/k<n;k++){
-//Nie rozumiem za bardzo jak ta for loop wyrobic
-}
+    int k=n-1;
+    while (n%k!=0){
+        --k;
+    }    
     return k;
 }
 
 int main(){
+    int n;
     cout<<"Podaj liczbe: ";
     cin>>n;
-    cout<<"Twoja liczba to: "<<szukaj();
+    cout<<"Twoja liczba to: "<<szukaj(n);
 }

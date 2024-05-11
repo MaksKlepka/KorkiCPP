@@ -7,6 +7,7 @@ int main(){
     cin>>n;
     cout<<"Podaj druga liczbe: ";
     cin>>m;
+    // Euklides wersja z odejmowaniem
     do
     {
         if(n > m) {
@@ -16,7 +17,10 @@ int main(){
         }
     }
     while(n!=m);
-
     cout<<"Najwiekszy wspolny dzielnik: "<<n<<endl;
+
+    //Euklides wersja z reszta z dzielenia
+
+
     return 0;
 }
