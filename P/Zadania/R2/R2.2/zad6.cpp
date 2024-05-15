@@ -3,7 +3,7 @@ using namespace std;
 
 int n, m;
 
-int pierwiastkowanie(){
+int potengowanie(){
     int  wynik=n;
     for(int i=1;i<=m-1;i++){
         wynik=wynik*n;
@@ -16,5 +16,5 @@ int main(){
     cin>>n;
     cout<<"Podaj liczbe m: ";
     cin>>m;
-    cout<<"Twoja liczba to: "<<pierwiastkowanie(); 
+    cout<<"Twoja liczba to: "<<potengowanie(); 
 }

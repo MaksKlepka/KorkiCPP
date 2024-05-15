@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int main()
@@ -12,6 +13,12 @@ int main()
     cin>>c;
     cout <<"Podaj czwarta liczbe: "; 
     cin>>d;
+
+    //Przypadek A
+
+    //Przypadek B
+
+    //Przypadek C
 
     return 0;
 }
