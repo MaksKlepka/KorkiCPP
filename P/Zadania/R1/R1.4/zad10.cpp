@@ -11,7 +11,6 @@ int main()
     if(n<=-1){
         n*=-1;
     }
-
     for(long int i=2;i*i<=n;i++){
         wynik=i;
     }
