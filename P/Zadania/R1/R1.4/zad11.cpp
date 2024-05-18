@@ -16,24 +16,36 @@ int main()
 
     //Przypadek A
 
-    for(int x=0;abs(a)*(x^2)+b*x+c+d>0;x++){
+    /*for(int x=0;abs(a)*(x*x)+b*x+c-d<=0;x++){
         wynik=x;
+    }*/
+
+    int x=0;
+    while (true)
+    {
+        if (abs(a)*(x*x)+b*x+c-d>0)
+        {
+            break;
+        }
+        ++x;
     }
-    cout<<wynik;
+    wynik=x;
+    cout<<"A: "<<wynik<<endl;
 
     //Przypadek B
 
     wynik=0;
-    for(int x=0;5*(x^2)+a*x+b+c<0;x++){
+    for(int x=0;5*(x*x)+a*x+b+c<0;x++){
         wynik=x;
     }
-    cout<<wynik;
+    cout<<"B: "<<wynik<<endl;
 
     //Przypadek C
 
-    for(int x=0;5*(x^2)+a*x+b+c<=0;x++){
+    for(int x=0;5*(x*x)+a*x+b+c<=0;x++){
         wynik=x;
     }
+    cout<<"C: "<<wynik<<endl;
 
     return 0;
 }
