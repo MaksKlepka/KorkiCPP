@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    int a, b, c, d, wynik;
+    float a, b, c, d, wynik;
     cout<<"Podaj pierwsza liczbe: "; 
     cin>>a;
     cout<<"Podaj druga liczbe: "; 
@@ -15,11 +15,6 @@ int main()
     cin>>d;
 
     //Przypadek A
-
-    /*for(int x=0;abs(a)*(x*x)+b*x+c-d<=0;x++){
-        wynik=x;
-    }*/
-
     int x=0;
     while (true)
     {
@@ -32,19 +27,26 @@ int main()
     wynik=x;
     cout<<"A: "<<wynik<<endl;
 
-    //Przypadek B
-
-    wynik=0;
-    for(int x=0;5*(x*x)+a*x+b+c<0;x++){
-        wynik=x;
+    //Przypadek B, dalej nie zrobiony
+    x=0;
+    while(false){
+        if(5*(x*x)+a*x+b-c<0){
+            break;
+        }
+        ++x;
     }
+    wynik=x;
     cout<<"B: "<<wynik<<endl;
 
-    //Przypadek C
-
-    for(int x=0;5*(x*x)+a*x+b+c<=0;x++){
-        wynik=x;
+    //Przypadek C, dalej nie zrobiony
+    x=0;
+    while(false){
+        if(5*(x*x)+a*x+b-c<=0){
+            break;
+        }
+        ++x;
     }
+    wynik=x;
     cout<<"C: "<<wynik<<endl;
 
     return 0;
