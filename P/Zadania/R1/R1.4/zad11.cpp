@@ -24,19 +24,35 @@ int main()
         }
         ++x;
     }
-    wynik=x;
-    cout<<"A: "<<wynik<<endl;
+    cout<<"A: "<<x<<endl;
 
     //Przypadek B, dalej nie zrobiony
-    x=0;
-    while(false){
-        if(5*(x*x)+a*x+b-c<0){
-            break;
+    
+    float wartosc_w0 = b-c;
+    x = 1;
+    while(true){
+        float wartosc_wx = 5*(x*x)+a*x+b-c;        
+        if (wartosc_w0>=0)
+        {
+            //czy warto szukac
+            if (wartosc_wx>wartosc_w0)
+            {
+                cout<<"Brak takiej liczby!"<<endl;
+                break;
+            }
+            ++x;
         }
-        ++x;
+        else
+        {
+            //szukamy
+            ++x;
+            if (5*(x*x)+a*x+b-c>=0)
+            {
+                break;
+            }
+        }       
     }
-    wynik=x;
-    cout<<"B: "<<wynik<<endl;
+    cout<<"B: "<<x-1<<endl;
 
     //Przypadek C, dalej nie zrobiony
     x=0;
