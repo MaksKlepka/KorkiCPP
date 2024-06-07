@@ -1,25 +1,32 @@
 #include <iostream>
 using namespace std;
 
-int suma(int n){
-    int i=0, suma=1;
-    while(i<n){
-        i++;
-        if(n%i == 0){
-            cout<<i;
-            if (n/i == i){
-                suma=suma+i;
-            }
+unsigned int NWD(unsigned int p, unsigned int d){
+    while(p!=d){
+        if(p>d){
+            p=p-d;
+        }
+        else{
+            d=d-p;
+        }
+        }
+    return p;
+}
+
+unsigned int suma(unsigned int n){
+    unsigned int i, sum=0;
+    for(i=1;i<n;i++){
+        if(NWD(i,n)==1){
+            sum+=i;
         }
     }
-    cout<<"Suma jest rowna: "<<suma;
-    return 0;
+    return sum;
 }
 
 int main(){
-    cout<<"Prosze podac liczbe n (Program wylicza sume liczb do n, ktore sa wzglednie pierwsze do n): ";
     int n;
+    cout<<"Prosze podac liczbe n (Program wylicza sume liczb do n, ktore sa wzglednie pierwsze do n): ";
     cin>>n;
-    suma(n);
+    cout<<"Wynik rowna sie: "<<suma(n);
     return 0;
 }
