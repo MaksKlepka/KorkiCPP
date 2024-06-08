@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+//podłoga z pierwiastka
 long int pierwiastkowanie(int j){
     long int wynik;
     for(long int i=0;i*i<=j;i++){
@@ -9,10 +10,11 @@ long int pierwiastkowanie(int j){
 return wynik;
 }
 
+//tu sumujemy
 int suma(long int n){
     long int suma=0;
-    for(int j=0;j<n;j++){
-        suma=suma+pierwiastkowanie(j);
+    for(int j=0;j<=n;j++){
+        suma+=pierwiastkowanie(j);
     }
     return suma;
 }
