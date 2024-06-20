@@ -20,7 +20,7 @@ int suma(long int n){
 }
 
 int main(){
-    long int n;
+    long int n, m;
     cout<<"Prosze podac liczbe n (Program pisze sume Pierwiastkow od 0 do n): ";
     cin>>n;
     cout<<"Suma rowna sie: "<<suma(n);
