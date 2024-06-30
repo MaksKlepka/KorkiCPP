@@ -22,10 +22,30 @@ do
 return 0;
 }
 
-/* to bedzie podpunkt (B) */
-long int rownanieB(long int n){
 
-return 0;
+int pierw(unsigned int x){
+    int pocz=0, kon=x, sr;
+    while(kon-pocz>1){
+        sr=(pocz+kon)/2;
+        if(sr*sr<=x)
+            pocz=sr;
+        else
+            kon=sr;
+    }
+    if(x<=1)
+        return kon;
+    else
+        return pocz;
+}
+
+/* to jest podpunkt (B) */
+void rownanieB(unsigned int n){
+    int i, p;
+    for(i=1;i<=pierw(n);i++){
+        p=pierw(n-i*i);
+        if((i*i+p*p==n)&&(i<p))
+            cout<<i<<"^2 + "<<p<<"^2 = "<<n<<endl;
+    }
 }
 
 int main(){
