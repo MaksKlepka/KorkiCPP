@@ -10,4 +10,5 @@ int* mniejsza(int *a, int *b){
 
 int main(){
     int mniejsza;
+    return 0;
 }
