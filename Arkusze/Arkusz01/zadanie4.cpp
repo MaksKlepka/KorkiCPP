@@ -78,7 +78,15 @@ string znadz_najdluszy_ciag(string slowo){
     return wynik.str();
 }
 
-bool czy_mniejszy(string s1, string s2, int i1, int i2){
+
+//napisz funkcje czy mniejszy napis
+bool czy_mniejszy_napis(string n1,string n2)
+{
+    
+}
+
+
+bool czy_mniejsza_para(string s1, string s2, int i1, int i2){
 
     int num1=i1, num2=i2;
     string word1=s1, word2=s2;
@@ -92,16 +100,23 @@ bool czy_mniejszy(string s1, string s2, int i1, int i2){
 	return false;
 }
 
+
+
+
 string najmniejsza_para(int liczby[],string slowa[]){
     stringstream wynik;
     string para_tekst=slowa[0]; //Importujemy tekst z tabeli slowa
     int para_liczba=liczby[0]; //Importujemy liczbe z tabeli slowa
 
-        for(int i=1;i<slowa[i].size(); i++){
-            if(czy_mniejszy(slowa[i], para_tekst, liczby[i], para_liczba)){ //sprawdzamy ktory jest najmniejszy
+        for(int i=1;i<100; i++){
+            if (liczby[i]==slowa[i].length())
+            {
+                if(czy_mniejsza_para(slowa[i], para_tekst, liczby[i], para_liczba))
+                { //sprawdzamy ktory jest najmniejszy
 			    para_tekst=slowa[i]; //zapisujemy odpowiedzi
                 para_liczba=liczby[i]; //zapisujemy odpowiedzi
-		    }
+		        }
+            }            
         }
 
 	cout<<para_liczba<<" "<<para_tekst<<endl;
@@ -112,7 +127,8 @@ string najmniejsza_para(int liczby[],string slowa[]){
 void zapisz1(const char* sciezka,int liczby[]){
     int i=0;
     fstream plik;
-    plik.open(sciezka,ios_base::in|ios_base::out);
+    plik.open(sciezka,ios_base::out);
+            plik<<"Zadanie 4.1"<<endl;
             while(i!=100)
             {
                 if(goldbach(liczby[i])!=""){
@@ -131,7 +147,8 @@ void zapisz2(const char* sciezka, string slowa[]){
     int i=0;
     fstream plik;
     plik.open(sciezka,ios_base::app);
-        while(i!=100)
+    plik<<endl<<"Zadanie 4.2"<<endl;
+        while(i<100)
         {
             plik<<znadz_najdluszy_ciag(slowa[i]);
             ++i;
@@ -146,7 +163,7 @@ int main()
     string slowa[100];
 
     const char* sciezka1 = "./dane/pary.txt";   //potrzebny do wpisania danych
-    const char* sciezka2 = "./dane/wyniki4.txt";    //potrzebny do zapisu danych
+    const char* sciezka2 = "./odpowiedzi/wyniki4.txt";    //potrzebny do zapisu danych
 
     wczytaj(sciezka1,liczby,slowa);
     zapisz1(sciezka2,liczby);
