@@ -49,7 +49,7 @@ string goldbach(int n){
             num1=i;
         }
     }
-    cout<<n<<" "<<num1<<" "<<num2<<endl;
+    //cout<<n<<" "<<num1<<" "<<num2<<endl;
     wynik<<n<<" "<<num1<<" "<<num2<<endl;
     return wynik.str();
 }
@@ -73,18 +73,21 @@ string znadz_najdluszy_ciag(string slowo){
     if(current.length()>longest.length()){ //sprawdz, czy aktualny ciag nie jest dluzszy niz ten zapisany
         longest=current;
     }
-    cout<<longest<<" "<<longest.length()<<endl;
+    //cout<<longest<<" "<<longest.length()<<endl;
     wynik<<longest<<" "<<longest.length()<<endl;
     return wynik.str();
 }
 
-
 //napisz funkcje czy mniejszy napis
-bool czy_mniejszy_napis(string n1,string n2)
+bool czy_mniejszy_napis(string n2,string n1)
 {
-    
+    if(n1.length()>n2.length()){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
-
 
 bool czy_mniejsza_para(string s1, string s2, int i1, int i2){
 
@@ -94,14 +97,11 @@ bool czy_mniejsza_para(string s1, string s2, int i1, int i2){
     if(num2>num1){ // porownujemy najpierw liczby
 		return true;
 	}
-	else if(num1 == num2 && word2>word1){ // jezeli sa rowne to porwonujemy wyrazy
+	else if(num1 == num2 && czy_mniejszy_napis(word2,word1)){ // jezeli sa rowne to porwonujemy wyrazy
         return true;
 	}
 	return false;
 }
-
-
-
 
 string najmniejsza_para(int liczby[],string slowa[]){
     stringstream wynik;
@@ -119,7 +119,7 @@ string najmniejsza_para(int liczby[],string slowa[]){
             }            
         }
 
-	cout<<para_liczba<<" "<<para_tekst<<endl;
+	//cout<<para_liczba<<" "<<para_tekst<<endl;
     wynik<<para_liczba<<" "<<para_tekst<<endl;  // zapisujemy wynik
 	return wynik.str(); //wynik wyjdzie 3 asq, wiem czemu ale nie wiem jak rozwiazac ten problem. 
 }
@@ -128,17 +128,22 @@ void zapisz1(const char* sciezka,int liczby[]){
     int i=0;
     fstream plik;
     plik.open(sciezka,ios_base::out);
-            plik<<"Zadanie 4.1"<<endl;
-            while(i!=100)
-            {
-                if(goldbach(liczby[i])!=""){
-                    plik<<goldbach(liczby[i]);
-                    ++i;
-                }
-                else{
-                    ++i;
-                }
+    if (plik.is_open()){
+        plik<<"Zadanie 4.1"<<endl;
+        while(i!=100)
+        {
+            if(goldbach(liczby[i])!=""){
+               plik<<goldbach(liczby[i]);
+                ++i;
             }
+            else{
+                ++i;
+            }
+        }
+    }
+    else{
+        cout<<"!!!!!!!!"<<endl;
+    }
     plik.close();
     return;
 }
@@ -147,12 +152,31 @@ void zapisz2(const char* sciezka, string slowa[]){
     int i=0;
     fstream plik;
     plik.open(sciezka,ios_base::app);
-    plik<<endl<<"Zadanie 4.2"<<endl;
-        while(i<100)
-        {
-            plik<<znadz_najdluszy_ciag(slowa[i]);
-            ++i;
-        }
+    if(plik.is_open()){
+        plik<<endl<<"Zadanie 4.2"<<endl;
+            while(i<100)
+            {
+                plik<<znadz_najdluszy_ciag(slowa[i]);
+                ++i;
+            }
+    }
+    else{
+        cout<<"!!!!!!!!"<<endl;
+    }
+    plik.close();
+    return;
+}
+
+void zapisz3(const char* sciezka, int liczby[], string slowa[]){
+    fstream plik;
+    plik.open(sciezka,ios_base::app);
+    if(plik.is_open()){
+        plik<<endl<<"Zadanie 4.3"<<endl;
+        plik<<najmniejsza_para(liczby,slowa);
+    }
+    else{
+        cout<<"!!!!!!!!"<<endl;
+    }
     plik.close();
     return;
 }
@@ -168,7 +192,6 @@ int main()
     wczytaj(sciezka1,liczby,slowa);
     zapisz1(sciezka2,liczby);
     zapisz2(sciezka2,slowa);
-    najmniejsza_para(liczby,slowa);
-
+    zapisz3(sciezka2,liczby,slowa);
     return 0;
 }
