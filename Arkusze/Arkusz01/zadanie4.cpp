@@ -78,7 +78,6 @@ string znadz_najdluszy_ciag(string slowo){
     return wynik.str();
 }
 
-//napisz funkcje czy mniejszy napis
 bool czy_mniejszy_napis(string n2,string n1)
 {
     if(n1.length()>n2.length()){
