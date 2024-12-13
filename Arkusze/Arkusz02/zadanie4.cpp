@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -28,6 +29,28 @@ int luka_pomiedzy_dwoma_liczbami(int liczby[], int i){
         wynik=wynik*(-1);
     }
     return wynik;
+}
+
+string najdluszy_fragment_regularnej(int liczby[]){
+    stringstream wynik;
+    int count=2, count_max=0, pierwsza_liczba, ostatnia_liczba;
+    for(int i=0;i<=998;i++){
+        if(luka_pomiedzy_dwoma_liczbami(liczby,i)==luka_pomiedzy_dwoma_liczbami(liczby,i+1)){
+            count+=1;
+            if(count>count_max){
+                count_max=count;
+                pierwsza_liczba=liczby[i];
+                ostatnia_liczba=liczby[i+count_max-1];
+            }
+        }
+        else{
+            count=2;
+        }
+    }
+    wynik<<"Najwieksza dlugosc fragmentu regularnego: "<<count_max<<endl;
+    wynik<<"Poczatek: "<<pierwsza_liczba<<endl;
+    wynik<<"Koniec: "<<ostatnia_liczba<<endl<<endl;
+    return wynik.str();
 }
 
 int najwieksza_luka(int liczby[]){
@@ -66,8 +89,21 @@ void zapisz1(const char* sciezka, int liczby[]){
     plik.open(sciezka,ios_base::out);
     if(plik.is_open()){
         plik<<"Zadanie 4.1"<<endl;
-        plik<<najwieksza_luka(liczby)<<endl;
-        plik<<najmniejsza_luka(liczby)<<endl<<endl;
+        plik<<"Najwieksza luka: "<<najwieksza_luka(liczby)<<endl;
+        plik<<"Najmniejsza luka: "<<najmniejsza_luka(liczby)<<endl<<endl;
+    }
+    else{
+        cout<<"Plik sie nie otworzyl!"<<endl;
+    }
+    return;
+}
+
+void zapisz2(const char* sciezka, int liczby[]){
+    fstream plik;
+    plik.open(sciezka,ios_base::app);
+    if(plik.is_open()){
+        plik<<"Zadanie 4.2"<<endl;
+        plik<<najdluszy_fragment_regularnej(liczby);
     }
     else{
         cout<<"Plik sie nie otworzyl!"<<endl;
@@ -81,9 +117,8 @@ int main(){
     const char* sciezka1 = "./dane/dane4.txt";
     const char* sciezka2 = "./odpowiedzi/zadanie4.txt";
 
-    wczytaj(sciezka1,liczby);
-    cout<<"Zadanie 4.1"<<endl;
-    cout<<"Najwieksza luka: "<<najwieksza_luka(liczby)<<endl;
-    cout<<"Najmniejsza luka: "<<najmniejsza_luka(liczby)<<endl;
+    wczytaj(sciezka1, liczby);
     zapisz1(sciezka2, liczby);
+    zapisz2(sciezka2, liczby);
+    najdluszy_fragment_regularnej(liczby);
 }
