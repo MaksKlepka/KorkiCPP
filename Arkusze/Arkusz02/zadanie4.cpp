@@ -23,6 +23,7 @@ void wczytaj(const char* sciezka, int liczby[]){
     return;
 }
 
+//i - indels pierwszej liczby
 int luka_pomiedzy_dwoma_liczbami(int liczby[], int i){
     int wynik = liczby[i]-liczby[i+1];
     if(wynik<0){
@@ -54,16 +55,14 @@ string najdluszy_fragment_regularnej(int liczby[]){
 }
 
 int najwieksza_luka(int liczby[]){
-    int i=0, wynik=luka_pomiedzy_dwoma_liczbami(liczby,i);
+    int i=0; 
+    int wynik=luka_pomiedzy_dwoma_liczbami(liczby,0);
 
-    while(i<998){
+    while(i<999){
         if(wynik<luka_pomiedzy_dwoma_liczbami(liczby,i+1)){
-            wynik=luka_pomiedzy_dwoma_liczbami(liczby,i+1);
-            ++i;
+            wynik=luka_pomiedzy_dwoma_liczbami(liczby,i+1);           
         }
-        else{
-            ++i;
-        }
+       ++i;
     }
     return wynik;
 }
@@ -112,7 +111,7 @@ void zapisz2(const char* sciezka, int liczby[]){
 }
 
 int main(){
-    int liczby[999];
+    int liczby[1000];
 
     const char* sciezka1 = "./dane/dane4.txt";
     const char* sciezka2 = "./odpowiedzi/zadanie4.txt";
