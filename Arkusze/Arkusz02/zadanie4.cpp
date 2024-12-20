@@ -70,7 +70,7 @@ int najwieksza_luka(int liczby[]){
 int najmniejsza_luka(int liczby[]){
     int i=0, wynik=luka_pomiedzy_dwoma_liczbami(liczby,i);
 
-    while(i<998){
+    while(i<999){
         if(wynik>luka_pomiedzy_dwoma_liczbami(liczby,i+1)){
             wynik=luka_pomiedzy_dwoma_liczbami(liczby,i+1);
             ++i;
@@ -81,6 +81,38 @@ int najmniejsza_luka(int liczby[]){
         
     }
     return wynik;
+}
+
+//Kod porownuje podana luke do wszystkich innych luk, wtedy oddaje illosc wystapien tej luki (Krotnosc)
+int krotnosc_luki(int liczby[], int n){
+    int count=0;
+    int luka_poruwnawscza=luka_pomiedzy_dwoma_liczbami(liczby,n);    //Podanna luka
+    int i=0;
+    while(i<999){
+        if(luka_poruwnawscza==luka_pomiedzy_dwoma_liczbami(liczby,i)){   //porownanie podanej luki do wszyskich innych
+            count+=1;
+        }
+        ++i;
+    }
+    return count;
+}
+
+string najczestsza_luka(int liczby[]){
+    int czesc1=krotnosc_luki(liczby,0);
+    int czesc2=luka_pomiedzy_dwoma_liczbami(liczby,0);
+    stringstream wynik;
+
+    for(int i=0;i<999;i++){
+        if(krotnosc_luki(liczby,i)>czesc1){
+            czesc1=krotnosc_luki(liczby,i);
+            czesc2=luka_pomiedzy_dwoma_liczbami(liczby,i);
+        }
+    }
+
+    wynik<<"Zadanie 4.3"<<endl;
+    wynik<<"Krotnosc najczestszej luki: "<<czesc1<<endl;
+    wynik<<"Wartosci najczestszych luk: "<<czesc2<<endl<<endl;
+    return wynik.str();
 }
 
 void zapisz1(const char* sciezka, int liczby[]){
@@ -110,6 +142,18 @@ void zapisz2(const char* sciezka, int liczby[]){
     return;
 }
 
+void zapisz3(const char* sciezka, int liczby[]){
+    fstream plik;
+    plik.open(sciezka,ios_base::app);
+    if(plik.is_open()){
+        plik<<najczestsza_luka(liczby);
+    }
+    else{
+        cout<<"Plik sie nie otworzyl!"<<endl;
+    }
+    return;
+}
+
 int main(){
     int liczby[1000];
 
@@ -119,5 +163,6 @@ int main(){
     wczytaj(sciezka1, liczby);
     zapisz1(sciezka2, liczby);
     zapisz2(sciezka2, liczby);
-    najdluszy_fragment_regularnej(liczby);
+    zapisz3(sciezka2, liczby);
+    return 0;
 }

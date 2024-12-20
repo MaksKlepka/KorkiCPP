@@ -7,3 +7,7 @@ Najwieksza dlugosc fragmentu regularnego: 17
 Poczatek: 217463476
 Koniec: 443949202
 
+Zadanie 4.3
+Krotnosc najczestszej luki: 31
+Wartosci najczestszych luk: 149
+
