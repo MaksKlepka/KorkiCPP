@@ -32,56 +32,61 @@ int luka_pomiedzy_dwoma_liczbami(int liczby[], int i){
     return wynik;
 }
 
-string najdluszy_fragment_regularnej(int liczby[]){
-    stringstream wynik;
-    int count=2, count_max=0, pierwsza_liczba, ostatnia_liczba;
-    for(int i=0;i<=998;i++){
-        if(luka_pomiedzy_dwoma_liczbami(liczby,i)==luka_pomiedzy_dwoma_liczbami(liczby,i+1)){
-            count+=1;
-            if(count>count_max){
-                count_max=count;
-                pierwsza_liczba=liczby[i];
-                ostatnia_liczba=liczby[i+count_max-1];
-            }
-        }
-        else{
-            count=2;
-        }
-    }
-    wynik<<"Najwieksza dlugosc fragmentu regularnego: "<<count_max<<endl;
-    wynik<<"Poczatek: "<<pierwsza_liczba<<endl;
-    wynik<<"Koniec: "<<ostatnia_liczba<<endl<<endl;
-    return wynik.str();
-}
-
+//1
 int najwieksza_luka(int liczby[]){
-    int i=0; 
     int wynik=luka_pomiedzy_dwoma_liczbami(liczby,0);
-
+    int i=1;
     while(i<999){
-        if(wynik<luka_pomiedzy_dwoma_liczbami(liczby,i+1)){
-            wynik=luka_pomiedzy_dwoma_liczbami(liczby,i+1);           
+        if(wynik<luka_pomiedzy_dwoma_liczbami(liczby,i)){
+            wynik=luka_pomiedzy_dwoma_liczbami(liczby,i);           
         }
        ++i;
     }
     return wynik;
 }
 
+//1
 int najmniejsza_luka(int liczby[]){
-    int i=0, wynik=luka_pomiedzy_dwoma_liczbami(liczby,i);
-
+    int wynik=luka_pomiedzy_dwoma_liczbami(liczby,0);
+    int i=1;
     while(i<999){
-        if(wynik>luka_pomiedzy_dwoma_liczbami(liczby,i+1)){
-            wynik=luka_pomiedzy_dwoma_liczbami(liczby,i+1);
-            ++i;
+        if(wynik>luka_pomiedzy_dwoma_liczbami(liczby,i)){
+            wynik=luka_pomiedzy_dwoma_liczbami(liczby,i); 
         }
-        else{
-            ++i;
-        }
-        
+        ++i;        
     }
     return wynik;
 }
+
+//2
+string najdluszy_fragment_regularnej(int liczby[]){
+    stringstream wynik;
+    int count=2, count_max=2;
+    int index_pierwszej_liczby = 0, index_pierwszej_max=0;
+    int luka1=luka_pomiedzy_dwoma_liczbami(liczby,0);
+    for(int i=1;i<999;i++){
+        int luka2=luka_pomiedzy_dwoma_liczbami(liczby,i);
+        if(luka2==luka1){
+            count+=1;            
+        }
+        else{
+            if (count>count_max)
+            {
+                count_max=count;
+                index_pierwszej_max=index_pierwszej_liczby;
+            }
+            index_pierwszej_liczby=i;
+            count=2;
+            luka1=luka2;
+        }
+    }
+    wynik<<"Najwieksza dlugosc fragmentu regularnego: "<<count_max<<endl;
+    wynik<<"Poczatek: "<<liczby[index_pierwszej_max]<<endl;
+    wynik<<"Koniec: "<<liczby[index_pierwszej_max+count_max-1]<<endl<<endl;
+    return wynik.str();
+}
+
+
 
 //Kod porownuje podana luke do wszystkich innych luk, wtedy oddaje illosc wystapien tej luki (Krotnosc)
 int krotnosc_luki(int liczby[], int n){

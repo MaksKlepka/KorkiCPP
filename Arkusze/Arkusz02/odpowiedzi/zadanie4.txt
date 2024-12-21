@@ -1,11 +1,11 @@
 Zadanie 4.1
-Najwieksza luka: 1829876333
+Najwieksza luka: 1056392131
 Najmniejsza luka: 1
 
 Zadanie 4.2
 Najwieksza dlugosc fragmentu regularnego: 17
-Poczatek: 217463476
-Koniec: 443949202
+Poczatek: 193134524
+Koniec: 223545714
 
 Zadanie 4.3
 Krotnosc najczestszej luki: 31
