@@ -38,7 +38,7 @@ int najwieksza_luka(int liczby[]){
     int i=1;
     while(i<999){
         if(wynik<luka_pomiedzy_dwoma_liczbami(liczby,i)){
-            wynik=luka_pomiedzy_dwoma_liczbami(liczby,i);           
+            wynik=luka_pomiedzy_dwoma_liczbami(liczby,i);
         }
        ++i;
     }
@@ -51,9 +51,9 @@ int najmniejsza_luka(int liczby[]){
     int i=1;
     while(i<999){
         if(wynik>luka_pomiedzy_dwoma_liczbami(liczby,i)){
-            wynik=luka_pomiedzy_dwoma_liczbami(liczby,i); 
+            wynik=luka_pomiedzy_dwoma_liczbami(liczby,i);
         }
-        ++i;        
+        ++i;
     }
     return wynik;
 }
@@ -67,7 +67,7 @@ string najdluszy_fragment_regularnej(int liczby[]){
     for(int i=1;i<999;i++){
         int luka2=luka_pomiedzy_dwoma_liczbami(liczby,i);
         if(luka2==luka1){
-            count+=1;            
+            count+=1;
         }
         else{
             if (count>count_max)
@@ -106,17 +106,21 @@ string najczestsza_luka(int liczby[]){
     int czesc1=krotnosc_luki(liczby,0);
     int czesc2=luka_pomiedzy_dwoma_liczbami(liczby,0);
     stringstream wynik;
+    stringstream temp;
 
+    wynik<<"Zadanie 4.3"<<endl;
     for(int i=0;i<999;i++){
         if(krotnosc_luki(liczby,i)>czesc1){
+            if(krotnosc_luki(liczby,i)=czesc1){
+                temp<<czesc2<<endl<<krotnosc_luki(liczby,i)
+            }
             czesc1=krotnosc_luki(liczby,i);
             czesc2=luka_pomiedzy_dwoma_liczbami(liczby,i);
         }
     }
 
-    wynik<<"Zadanie 4.3"<<endl;
     wynik<<"Krotnosc najczestszej luki: "<<czesc1<<endl;
-    wynik<<"Wartosci najczestszych luk: "<<czesc2<<endl<<endl;
+    wynik<<"Wartosci najczestszych luk: "<<temp<<endl<<endl;
     return wynik.str();
 }
 
