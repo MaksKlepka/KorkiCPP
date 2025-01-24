@@ -86,8 +86,6 @@ string najdluszy_fragment_regularnej(int liczby[]){
     return wynik.str();
 }
 
-
-
 //Kod porownuje podana luke do wszystkich innych luk, wtedy oddaje illosc wystapien tej luki (Krotnosc)
 int krotnosc_luki(int liczby[], int n){
     int count=0;
@@ -112,7 +110,7 @@ string najczestsza_luka(int liczby[]){
     for(int i=0;i<999;i++){
         if(krotnosc_luki(liczby,i)>czesc1){
             if(krotnosc_luki(liczby,i)=czesc1){
-                temp<<czesc2<<endl<<krotnosc_luki(liczby,i)
+                temp<<czesc2<<endl<<krotnosc_luki(liczby,i);
             }
             czesc1=krotnosc_luki(liczby,i);
             czesc2=luka_pomiedzy_dwoma_liczbami(liczby,i);
