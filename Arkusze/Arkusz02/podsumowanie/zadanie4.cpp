@@ -21,15 +21,13 @@ void wczytaj(const char* sciezka, int liczby[]){
 }
 
 void luka_pomiedzy_liczbami_import(int liczby[],int luka[]){
-    int i=0;
+    int i=1;
     int temp=0;
     while(i<=999){
-        if(liczby[i]-liczby[i+1]<0){
-            temp=(liczby[i]-liczby[i+1])*-1;
-        }
-        else{
-            temp=(liczby[i]-liczby[i+1]);
-        }
+        temp=(liczby[i]-liczby[i-1]);
+        if(temp<0){
+            temp=-temp;
+        }        
         luka[i]=temp;
         i++;
     }

@@ -1,0 +1,3 @@
+Zadanie 4.3
+Jest dokladnie 27 liczb ktorych waga rowna sie 1.
+
