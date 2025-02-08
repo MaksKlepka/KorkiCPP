@@ -109,7 +109,7 @@ string najczestsza_luka(int liczby[]){
     wynik<<"Zadanie 4.3"<<endl;
     for(int i=0;i<999;i++){
         if(krotnosc_luki(liczby,i)>czesc1){
-            if(krotnosc_luki(liczby,i)=czesc1){
+            if(krotnosc_luki(liczby,i)==czesc1){
                 temp<<czesc2<<endl<<krotnosc_luki(liczby,i);
             }
             czesc1=krotnosc_luki(liczby,i);
@@ -118,7 +118,7 @@ string najczestsza_luka(int liczby[]){
     }
 
     wynik<<"Krotnosc najczestszej luki: "<<czesc1<<endl;
-    wynik<<"Wartosci najczestszych luk: "<<temp<<endl<<endl;
+    wynik<<"Wartosci najczestszych luk: "<<endl<<endl;
     return wynik.str();
 }
 
