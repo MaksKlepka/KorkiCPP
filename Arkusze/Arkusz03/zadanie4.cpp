@@ -2,7 +2,6 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <algorithm>
 
 using namespace std;
 
@@ -35,7 +34,9 @@ bool czy_jest_pierwsza(int liczba){
     if(liczba==0||liczba==1){
         return false;
     }
-    for(int i=2;i<=liczba/2;++i){
+    //liczba 23 -> 23/2=11,23/3=7,23/4=5,23/6=3,23/7=3,23/8=2,23/9=2,23/10/2,23/11=2
+    //jeśli nie jest pierwsza -> liczba=n*m, n<=m -> liczba=n*n
+    for(int i=2;i*i<=liczba;++i){
         if(liczba%i==0){
             return false;
         }
@@ -61,6 +62,17 @@ int obrocenie_liczby(int liczba){
         liczba/=10;
     }
     return wynik;
+}
+
+int obracanie_s(int liczba)
+{
+    string liczbaS = to_string(liczba);
+    string liczbaO = "";    
+    for (int i=liczbaS.length()-1;i>=0;--i)
+    {
+       liczbaO+=liczbaS.at(i);
+    }
+    return stoi(liczbaS);
 }
 
 string polaczenie_obrotu_i_pierwszej(int liczby[]){
