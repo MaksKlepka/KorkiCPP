@@ -1,0 +1,145 @@
+Zadanie 1
+
+1.1
+
+1.2
+
+1.3
+
+
+Zadanie 2
+
+2.1
+Dla liczby 5142102:
+
+b=1
+c=0
+a=2
+n=54210
+a mod 2 = 0? Prawda
+c=0+1*1
+c=1
+b=10
+
+b=10
+c=1
+a=0
+n=5421
+a mod 2 = 0? Prawda
+c=1+10*0
+c=1
+b=100
+
+b=100
+c=1
+a=1
+n=542
+a mod 2 = 0? Falsz, pierwszy raz
+c=1+100
+c=101
+b=1000
+
+b=1000
+c=101
+a=2
+n=54
+a mod 2 = 0? Prawda
+c=101+1000*1
+c=1101
+b=10000
+
+b=10000
+c=1101
+a=4
+n=5
+a mod 2 = 0? Prawda
+c=1101+10000*2
+c=21201
+b=100000
+
+b=100000
+c=21101
+a=5
+n=0
+a mod 2 = 0? Falsz, drugi raz
+c=21101*100000
+c=121101
+b=10000000
+
+Wartosc c po wykonaniu algorytmu dla danego n: 121101
+Liczba wykonan instrukcji c=c+b: 2
+
+Dla liczby 87654321012345678: 
+
+Wartosc c po wykonaniu algorytmu dla danego n: 41312111011121314
+Liczba wykonan instrukcji c=c+b: 8
+
+2.2
+dla liczby 333333666666999999:
+
+b=1
+c=0
+a=9
+n=33333366666699999
+Falsz
+c=0+1
+b=10
+
+... (i tak asz przejdziemy przez wszystkie 9)
+
+b=1000000
+c=111111
+a=6
+n=33333366666
+Prawda
+c=111111+1000000*3
+c=3111111
+b=10000000
+
+...
+
+b=1000000000000
+c=333333111111
+a=3
+n=33333
+Falsz
+c=333333111111+1000000000000
+c=1333333111111
+b=1000000000000
+
+...
+
+Wartosc c po wykonaniu algorytmu dla danego n: 111111333333111111
+liczba wykonan instrukcji c=c+b: 12
+
+
+Zadanie 3
+
+3.1
+
+
+Zadanie 5
+
+1.
+2.
+3.
+
+
+Zadanie 6
+
+101112 + 121 = _____
+101112 - 121 = _____
+
+1*3^2 + 2*3 + 1 = 9+6+1 = 16
+
+16/3 = 5 r. 3
+5/3 = 1 r. 3
+1/3 = 0 r. 3
+
+101112 + 333 = 112020
+101112 - 333 = 20211
+
+
+Zadanie 8
+
+8.4
