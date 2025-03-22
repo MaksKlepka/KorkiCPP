@@ -26,11 +26,35 @@ void wczytaj(const char* sciezka,int liczby1[],int liczby2[],int ile){
     return;
 }
 
+int* kopiaTd(int tab[],int size)
+{
+    int* kopia = new int(size);
+    for (int i=0;i<size;i++)
+    {
+        kopia[i]=tab[i];
+    }
+    return kopia;
+}
+
+void kopiaTs(int tab[],int kopia[],int size)
+{    
+    for (int i=0;i<size;i++)
+    {
+        kopia[i]=tab[i];
+    }   
+}
+
+//napisać funkcję zamieniającą miejscami dwie liczby
+void zamien(int a,int b)
+{
+
+}
+
 void sortowanie_babelkowe(int liczby[],int ile){
     for(int i=0;i<ile;i++){
-        for(int j=1;j<ile;j++){
+        for(int j=1;j<ile-i;j++){
             if(liczby[j-1]<liczby[j])
-                swap(liczby[j-1],liczby[j]);
+                zamien(liczby[j-1],liczby[j]);
         }
     }
 }
@@ -107,6 +131,11 @@ void zapisz2(const char* sciezka, int liczby[], int ile){
  
 int main(){
     int liczby1[3000];
+    //dynamicznie
+    int* kopia1=kopiaTd(liczby1,3000);
+    //statycznie
+    int kopia2[3000];
+    kopiaTs(liczby1,kopia2,3000);
     //int liczby1p[200];
     int liczby2[20];
 
@@ -118,4 +147,6 @@ int main(){
     zapisz1(sciezka_zapisz,ile_dzielnikow(liczby1,liczby2,3000));
     zapisz2(sciezka_zapisz,liczby1,3000);
     //sortowanie_babelkowe(liczby1,3000);
+
+    delete[] kopia1;
 }
