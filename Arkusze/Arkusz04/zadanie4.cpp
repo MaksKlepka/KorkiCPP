@@ -45,16 +45,18 @@ void kopiaTs(int tab[],int kopia[],int size)
 }
 
 //napisać funkcję zamieniającą miejscami dwie liczby
-void zamien(int a,int b)
+void zamien(int* a,int* b)
 {
-
+    int temp=*b;
+    *b=*a;
+    *a=temp;
 }
 
 void sortowanie_babelkowe(int liczby[],int ile){
     for(int i=0;i<ile;i++){
         for(int j=1;j<ile-i;j++){
             if(liczby[j-1]<liczby[j])
-                zamien(liczby[j-1],liczby[j]);
+                zamien(&liczby[j-1],&liczby[j]);
         }
     }
 }
@@ -72,32 +74,20 @@ int ile_dzielnikow(int liczby1[], int liczby2[],int ile){
     return wynik;
 }
 
+void temp(int liczby1[],int liczby2[],int ile1, int ile2){
+    for(int i=0;i<ile2;i++){
+        for(int j=0;liczby1[j]<liczby2[i];j++){
+            
+        }
+    }
+}
+
 float srednia_arytmetyczna(int liczby[],int pierwszy_element_ciagu,int illosc_elementow){
     float wynik=0;
     for(int i=0;i<illosc_elementow;i++){
         wynik=wynik+liczby[pierwszy_element_ciagu+i];
     }
     return wynik/illosc_elementow;
-}
-
-void najwieksza_srednia_arytmetyczna(int liczby[],int){
-    stringstream wynik;
-    float naj_srednia = 0;
-    int pierwszy_element_ciagu = 0;
-    int illosc_elementow = 0;
-
-    for(int i=0;i<3000;i++){ //Uzywajac i dostaniemy pierwszy element ciagu
-        for(int j=0;j<3000;j++){
-            if(srednia_arytmetyczna(liczby,i,j)>naj_srednia){
-                naj_srednia=srednia_arytmetyczna(liczby,i,j);
-                illosc_elementow = j;
-                pierwszy_element_ciagu = i;
-            }
-        }
-    wynik<<"Najwieksza srednia arytmetyczna: "<<naj_srednia<<endl;
-    wynik<<"Pierwszy_element_ciagu: "<<pierwszy_element_ciagu<<endl;
-    wynik<<"illosc elementow: "<<illosc_elementow<<endl;
-    }
 }
 
 void zapisz1(const char* sciezka, int wynik){
@@ -128,14 +118,17 @@ void zapisz2(const char* sciezka, int liczby[], int ile){
     }
     plik.close();
 }
+void zapisz4(){
+
+}
  
 int main(){
     int liczby1[3000];
     //dynamicznie
-    int* kopia1=kopiaTd(liczby1,3000);
+    //int* kopia1=kopiaTd(liczby1,3000);
     //statycznie
-    int kopia2[3000];
-    kopiaTs(liczby1,kopia2,3000);
+    //int kopia2[3000];
+    //kopiaTs(liczby1,kopia2,3000);
     //int liczby1p[200];
     int liczby2[20];
 
@@ -146,7 +139,5 @@ int main(){
     wczytaj(sciezka_wczytaj,liczby1,liczby2,3000);
     zapisz1(sciezka_zapisz,ile_dzielnikow(liczby1,liczby2,3000));
     zapisz2(sciezka_zapisz,liczby1,3000);
-    //sortowanie_babelkowe(liczby1,3000);
-
-    delete[] kopia1;
+    wczytaj(sciezka_wczytaj,liczby1,liczby2,3000);
 }
