@@ -74,10 +74,20 @@ int ile_dzielnikow(int liczby1[], int liczby2[],int ile){
     return wynik;
 }
 
-void temp(int liczby1[],int liczby2[],int ile1, int ile2){
+void zad_4_3(int liczby1[],int liczby2[],int ile1, int ile2){
+    stringstream wynik;
     for(int i=0;i<ile2;i++){
+        int badanaLiczba=liczby2[i];
         for(int j=0;liczby1[j]<liczby2[i];j++){
-            
+            if (badanaLiczba%liczby1[j]==0)
+            {
+                badanaLiczba/=liczby1[j];
+            }
+            if (badanaLiczba==1)
+            {
+                wynik<<liczby2[i]<<" ";
+                break;
+            }            
         }
     }
 }
