@@ -74,11 +74,11 @@ int ile_dzielnikow(int liczby1[], int liczby2[],int ile){
     return wynik;
 }
 
-void zad_4_3(int liczby1[],int liczby2[],int ile1, int ile2){
+string zad_4_3(int liczby1[],int liczby2[],int ile1,int ile2){
     stringstream wynik;
     for(int i=0;i<ile2;i++){
         int badanaLiczba=liczby2[i];
-        for(int j=0;liczby1[j]<liczby2[i];j++){
+        for(int j=0;ile1 && liczby1[j]<liczby2[i];j++){
             if (badanaLiczba%liczby1[j]==0)
             {
                 badanaLiczba/=liczby1[j];
@@ -90,6 +90,7 @@ void zad_4_3(int liczby1[],int liczby2[],int ile1, int ile2){
             }            
         }
     }
+    return wynik.str();
 }
 
 float srednia_arytmetyczna(int liczby[],int pierwszy_element_ciagu,int illosc_elementow){
@@ -98,6 +99,35 @@ float srednia_arytmetyczna(int liczby[],int pierwszy_element_ciagu,int illosc_el
         wynik=wynik+liczby[pierwszy_element_ciagu+i];
     }
     return wynik/illosc_elementow;
+}
+
+float wieksza_srednia_arytmetyczna(float max_srednia, int max_dlugosc, int liczby[]){
+    float wynik = max_srednia*max_dlugosc;
+    wynik += liczby[max_dlugosc];
+    wynik /= (max_dlugosc+1);
+    return wynik;
+}
+
+void zadanie_4_4(int liczby[], int ile){
+    float max_srednia = srednia_arytmetyczna(liczby,0,50);
+    int max_poczatek_liczba = 0;//wyrazone jako indeks liczby, liczby[max_poczatek_liczba]
+    int max_dlugosc = 50;//aby dostac ostatni wyraz ciagu, max_poczatek_liczba + max_dlugosc
+    int licz = 0;
+    stringstream wynik;
+    
+    while(licz<ile){
+        if(wieksza_srednia_arytmetyczna(max_srednia,max_dlugosc,liczby)>=max_srednia){
+            max_srednia=wieksza_srednia_arytmetyczna(max_srednia,max_dlugosc,liczby);
+            max_dlugosc++;
+        }
+        else{
+            for(;;){
+
+            }
+        }
+        licz++;
+    }
+    cout<<max_srednia;
 }
 
 void zapisz1(const char* sciezka, int wynik){
@@ -128,6 +158,20 @@ void zapisz2(const char* sciezka, int liczby[], int ile){
     }
     plik.close();
 }
+
+void zapisz3(const char* sciezka, int liczby1[], int liczby2[], int ile1, int ile2){
+    fstream plik;
+    plik.open(sciezka,ios_base::app);
+    if(plik.is_open()){
+        plik<<"Zadanie 4.3"<<endl<<endl;
+        plik<<zad_4_3(liczby1, liczby2, ile1, ile2)<<endl<<endl;
+    }
+    else{
+        cout<<"Plik sie nie otworzyl!";
+    }
+    plik.close();
+}
+
 void zapisz4(){
 
 }
@@ -149,5 +193,9 @@ int main(){
     wczytaj(sciezka_wczytaj,liczby1,liczby2,3000);
     zapisz1(sciezka_zapisz,ile_dzielnikow(liczby1,liczby2,3000));
     zapisz2(sciezka_zapisz,liczby1,3000);
+    //zapisz3(sciezka_zapisz,liczby1,liczby2,3000,20);
     wczytaj(sciezka_wczytaj,liczby1,liczby2,3000);
+    zadanie_4_4(liczby1,3000);
+    return 0;
+    
 }
