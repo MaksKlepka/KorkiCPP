@@ -93,25 +93,43 @@ string zad_4_3(int liczby1[],int liczby2[],int ile1,int ile2){
     return wynik.str();
 }
 
-float srednia_arytmetyczna(int liczby[],int pierwszy_element_ciagu,int illosc_elementow){
-    float wynik=0;
-    for(int i=0;i<illosc_elementow;i++){
-        wynik=wynik+liczby[pierwszy_element_ciagu+i];
-    }
-    return wynik/illosc_elementow;
-}
-
-float wieksza_srednia_arytmetyczna(float max_srednia, int max_dlugosc, int liczby[]){
-    float wynik = max_srednia*max_dlugosc;
-    wynik += liczby[max_dlugosc];
-    wynik /= (max_dlugosc+1);
-    return wynik;
+float srednia(float sr_0,int illosc_elementow,int nowy_element){
+    return (illosc_elementow*sr_0+nowy_element)/(illosc_elementow+1);
 }
 
 void zadanie_4_4(int liczby[], int ile){
-    float max_srednia = srednia_arytmetyczna(liczby,0,50);
-    int max_poczatek_liczba = 0;//wyrazone jako indeks liczby, liczby[max_poczatek_liczba]
-    int max_dlugosc = 50;//aby dostac ostatni wyraz ciagu, max_poczatek_liczba + max_dlugosc
+    float max_srednia=0;
+    int max_poczatek=0;//wyrazone jako indeks liczby, liczby[max_poczatek_liczba]
+    int max_dlugosc=50;//aby dostac ostatni wyraz ciagu, max_poczatek_liczba + max_dlugosc
+    for (int i=0;i<ile-50;++i)
+    {
+        float sr=0;
+        for (int j=i;j<i+50;++j)
+        {
+            sr+=liczby[i+j];
+        }
+        sr/=50;
+        int dlg=50;
+        if (sr>max_srednia)
+        {
+            max_srednia=sr;
+            max_poczatek=i;
+            max_dlugosc=dlg;
+        }
+        for (int j=i+50;j<ile;++j)
+        {
+            sr=srednia(sr,dlg,liczby[j]);
+            ++dlg;
+            if (sr>max_srednia)
+            {
+                max_srednia=sr;
+                max_poczatek=i;
+                max_dlugosc=dlg;
+            }
+        }
+
+
+    }
     int licz = 0;
     stringstream wynik;
     
