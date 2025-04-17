@@ -1,35 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <sstream>
 using namespace std;
 
-int najwolniejsza_predkosc(vector<int>& predkosc);
-void wczytaj(const char* sciezka,vector<int>& kilometer,vector<int>& predkosc);
-int illosc_kolumn(vector<int>& predkosc);
-
-int main(){
-    vector <int> kilometer;
-    vector <int> predkosc;
-    vector <int[2]> ciezarowki;
-
-    const char* scieszka_wczytaj="./dane/BIT18.txt";
-
-    wczytaj(scieszka_wczytaj,kilometer,predkosc);
-    /*for(int i=0; i<kilometer.size()&& i<predkosc.size(); i++)
-    cout<<kilometer[i]<<" "<<predkosc[i]<<endl;*/
-}
-
-int najwolniejsza_predkosc(vector<int>& predkosc){
-    int slowest_speed=predkosc.at(0);
-    for(int i=1;i<predkosc.size();i++){
-        if(predkosc.at(i)<slowest_speed){
-            slowest_speed=predkosc.at(i);
-        }
-    }
-    return slowest_speed;
-}
-
-void wczytaj(const char* sciezka,vector<int>& kilometer,vector<int>& predkosc){
+void wczytaj_dla_2_wektorow(const char* sciezka,vector<int>& kilometer,vector<int>& predkosc){
     fstream plik;
     int km, pr;
     plik.open(sciezka,ios_base::in);
@@ -45,13 +20,55 @@ void wczytaj(const char* sciezka,vector<int>& kilometer,vector<int>& predkosc){
     plik.close();
 }
 
-int illosc_kolumn(vector<int>& predkosc){
-    int wynik=0;
-    int slowest_speed=najwolniejsza_predkosc(predkosc);
-    for(int i=predkosc.size();i>0;i--){
-        if(predkosc.at(i)<predkosc.at(i-1)){
+void wczytaj_dla_1_wektora_z_tablica(const char* sciezka,vector<int>& ciezarowki){
+    fstream plik;
+    plik.open(sciezka,ios_base::in);
+    if(plik.is_open()){
+        while(!plik.eof()){
 
         }
     }
+    else{
+        cout<<"Plik sie nie otworzyl i nie zapisuje!";
+    }
+    plik.close();
+}
+
+int zad_1(vector<int>& predkosc){
+    int wynik=1;
+    int predkosc_min=predkosc.at(predkosc.size()-1);
+    for(int i=predkosc.size()-1;i>0;i--){
+        if(predkosc_min>=predkosc.at(i-1)){
+            predkosc_min=predkosc.at(i-1);
+            wynik++;
+        }
+    }
     return wynik;
+}
+
+void zapisz(const char* sciezka, int wynik, int count){
+    fstream plik;
+    plik.open(sciezka,ios_base::out);
+    if(plik.is_open()){
+        plik<<"Zadanie 1."<<count<<endl<<endl;
+        plik<<wynik<<endl<<endl;
+    }
+    else{
+        cout<<"Plik sie nie otworzyl i nie zapisuje!";
+    }
+    plik.close();
+}
+
+int main(){
+    vector <int> kilometer;
+    vector <int> predkosc;
+    vector <int[2]> ciezarowki;
+    int count=1;
+
+    const char* sciezka_wczytaj="./dane/BIT18.txt";
+    const char* sciezka_zapisz="./odpowiedzi/wyniki1.txt";
+
+    wczytaj_dla_2_wektorow(sciezka_wczytaj,kilometer,predkosc);
+    zapisz(sciezka_zapisz,zad_1(predkosc),count);
+    count++;
 }

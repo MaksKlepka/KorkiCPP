@@ -97,27 +97,27 @@ float srednia(float sr_0,int illosc_elementow,int nowy_element){
     return (illosc_elementow*sr_0+nowy_element)/(illosc_elementow+1);
 }
 
-void zadanie_4_4(int liczby[], int ile){
+string zadanie_4_4(int liczby[], int ile){
     float max_srednia=0;
     int max_poczatek=0;//wyrazone jako indeks liczby, liczby[max_poczatek_liczba]
     int max_dlugosc=50;//aby dostac ostatni wyraz ciagu, max_poczatek_liczba + max_dlugosc
+    stringstream wynik;
     for (int i=0;i<ile-50;++i)
     {
         float sr=0;
-        for (int j=i;j<i+50;++j)
-        {
+        for (int j=i;j<i+50;++j){//counts the first average for 50 numbers, starting from i
             sr+=liczby[i+j];
         }
         sr/=50;
         int dlg=50;
+
         if (sr>max_srednia)
         {
             max_srednia=sr;
             max_poczatek=i;
             max_dlugosc=dlg;
         }
-        for (int j=i+50;j<ile;++j)
-        {
+        for (int j=i+50;j<ile;++j){//counts the averages for i+50 numbers, starting from i
             sr=srednia(sr,dlg,liczby[j]);
             ++dlg;
             if (sr>max_srednia)
@@ -127,25 +127,9 @@ void zadanie_4_4(int liczby[], int ile){
                 max_dlugosc=dlg;
             }
         }
-
-
     }
-    int licz = 0;
-    stringstream wynik;
-    
-    while(licz<ile){
-        if(wieksza_srednia_arytmetyczna(max_srednia,max_dlugosc,liczby)>=max_srednia){
-            max_srednia=wieksza_srednia_arytmetyczna(max_srednia,max_dlugosc,liczby);
-            max_dlugosc++;
-        }
-        else{
-            for(;;){
-
-            }
-        }
-        licz++;
-    }
-    cout<<max_srednia;
+    wynik<<max_srednia<<" "<<max_dlugosc<<" "<<liczby[max_poczatek];
+    return wynik.str();
 }
 
 void zapisz1(const char* sciezka, int wynik){
@@ -190,8 +174,17 @@ void zapisz3(const char* sciezka, int liczby1[], int liczby2[], int ile1, int il
     plik.close();
 }
 
-void zapisz4(){
-
+void zapisz4(const char* sciezka, int liczby1[], int ile){
+    fstream plik;
+    plik.open(sciezka,ios_base::app);
+    if(plik.is_open()){
+        plik<<"Zadanie 4.4"<<endl<<endl;
+        plik<<zadanie_4_4(liczby1,ile)<<endl<<endl;
+    }
+    else{
+        cout<<"Plik sie nie otworzyl!";
+    }
+    plik.close();
 }
  
 int main(){
@@ -213,7 +206,7 @@ int main(){
     zapisz2(sciezka_zapisz,liczby1,3000);
     //zapisz3(sciezka_zapisz,liczby1,liczby2,3000,20);
     wczytaj(sciezka_wczytaj,liczby1,liczby2,3000);
-    zadanie_4_4(liczby1,3000);
+    zapisz4(sciezka_zapisz,liczby1,3000);
     return 0;
     
 }
