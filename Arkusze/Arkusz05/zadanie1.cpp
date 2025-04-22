@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <array>
 #include <fstream>
-#include <sstream>
 using namespace std;
 
 void wczytaj_dla_2_wektorow(const char* sciezka,vector<int>& kilometer,vector<int>& predkosc){
@@ -20,12 +20,13 @@ void wczytaj_dla_2_wektorow(const char* sciezka,vector<int>& kilometer,vector<in
     plik.close();
 }
 
-void wczytaj_dla_1_wektora_z_tablica(const char* sciezka,vector<int>& ciezarowki){
+void wczytaj_dla_1_wektora_z_tablica(const char* sciezka,vector<array<int,2>>& ciezarowki){
     fstream plik;
+    int km, pr;
     plik.open(sciezka,ios_base::in);
     if(plik.is_open()){
-        while(!plik.eof()){
-
+        while(plik>>km>>pr){
+            ciezarowki.push_back({km,pr});
         }
     }
     else{
@@ -35,9 +36,9 @@ void wczytaj_dla_1_wektora_z_tablica(const char* sciezka,vector<int>& ciezarowki
 }
 
 int zad_1(vector<int>& predkosc){
-    int wynik=1;
+    int wynik=0;
     int predkosc_min=predkosc.at(predkosc.size()-1);
-    for(int i=predkosc.size()-1;i>0;i--){
+    for(int i=predkosc.size();i>0;i--){
         if(predkosc_min>=predkosc.at(i-1)){
             predkosc_min=predkosc.at(i-1);
             wynik++;
@@ -46,9 +47,48 @@ int zad_1(vector<int>& predkosc){
     return wynik;
 }
 
+int zad_2(vector<int>& predkosc){
+    int najdlusza_kolumna=1;
+    int kolumna=0;
+    int predkosc_min=predkosc.at(predkosc.size()-1);
+    for(int i=predkosc.size();i>0;i--){
+        if(najdlusza_kolumna<=kolumna){
+            najdlusza_kolumna=kolumna;
+        }
+        if(predkosc_min>=predkosc.at(i-1)){
+            predkosc_min=predkosc.at(i-1);
+            kolumna=0;
+        }
+        kolumna++;
+    }
+    return najdlusza_kolumna;
+}
+
+int zad_3(vector<int>& predkosc){
+    int predkosc_min=predkosc.at(predkosc.size()-1);
+    int roznica=0;
+    int roznica_wynik=0;
+    for(int i=predkosc.size();i>0;i--){
+        if(predkosc_min>=predkosc.at(i-1)){
+            predkosc_min=predkosc.at(i-1);
+        }
+        roznica=predkosc.at(i-1)-predkosc_min;
+        if(roznica>roznica_wynik){
+            roznica_wynik=roznica;
+        }
+    }
+    return roznica_wynik;
+}
+
+void reset_file(const char* sciezka){
+    fstream plik;
+    plik.open(sciezka,ios_base::out|ios_base::trunc);
+    plik.close();
+}
+
 void zapisz(const char* sciezka, int wynik, int count){
     fstream plik;
-    plik.open(sciezka,ios_base::out);
+    plik.open(sciezka,ios_base::app);
     if(plik.is_open()){
         plik<<"Zadanie 1."<<count<<endl<<endl;
         plik<<wynik<<endl<<endl;
@@ -62,13 +102,18 @@ void zapisz(const char* sciezka, int wynik, int count){
 int main(){
     vector <int> kilometer;
     vector <int> predkosc;
-    vector <int[2]> ciezarowki;
+    vector <array<int,2>> ciezarowki;
     int count=1;
 
     const char* sciezka_wczytaj="./dane/BIT18.txt";
     const char* sciezka_zapisz="./odpowiedzi/wyniki1.txt";
 
+    reset_file(sciezka_zapisz);
     wczytaj_dla_2_wektorow(sciezka_wczytaj,kilometer,predkosc);
     zapisz(sciezka_zapisz,zad_1(predkosc),count);
     count++;
+    zapisz(sciezka_zapisz,zad_2(predkosc),count);
+    count++;
+    zapisz(sciezka_zapisz,zad_3(predkosc),count);
+    return 0;
 }
