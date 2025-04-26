@@ -36,11 +36,11 @@ void wczytaj_dla_1_wektora_z_tablica(const char* sciezka,vector<array<int,2>>& c
 }
 
 int zad_1(vector<int>& predkosc){
-    int wynik=0;
+    int wynik=1;
     int predkosc_min=predkosc.at(predkosc.size()-1);
-    for(int i=predkosc.size();i>0;i--){
-        if(predkosc_min>=predkosc.at(i-1)){
-            predkosc_min=predkosc.at(i-1);
+    for(int i=predkosc.size()-2;i>0;i--){
+        if(predkosc_min>=predkosc.at(i)){
+            predkosc_min=predkosc.at(i);
             wynik++;
         }
     }
