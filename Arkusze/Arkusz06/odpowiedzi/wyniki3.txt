@@ -1,0 +1,38 @@
+--------------------------------------------------------------------------------
+Zadanie 3.1 (slowa_przyklad.txt)
+--------------------------------------------------------------------------------
+Fragment "k?t" wystepuje w 2 zbadanych slowach.
+--------------------------------------------------------------------------------
+Zadanie 3.1 (slowa.txt)
+--------------------------------------------------------------------------------
+Fragment "k?t" wystepuje w 26 zbadanych slowach.
+--------------------------------------------------------------------------------
+Zadanie 3.2 (slowa_przyklad.txt)
+--------------------------------------------------------------------------------
+Liczba slow, ktore można odczytac wspak po zakodowaniu: 2.
+Najdluzsze z nich to: "aren".
+--------------------------------------------------------------------------------
+Zadanie 3.2 (slowa.txt)
+--------------------------------------------------------------------------------
+Liczba slow, ktore można odczytac wspak po zakodowaniu: 5.
+Najdluzsze z nich to: "rhszzohhubwbojohuubmmfue".
+--------------------------------------------------------------------------------
+Zadanie 3.3 (slowa_przyklad.txt)
+--------------------------------------------------------------------------------
+1)	terefere
+2)	ananas
+3)	bo
+4)	alabama
+Jest takich slow 4:
+--------------------------------------------------------------------------------
+Zadanie 3.3 (slowa.txt)
+--------------------------------------------------------------------------------
+1)	vzwzwgszezvzzlzzzzzzouz
+2)	azaaasfakaaaxbaaaaau
+3)	ppppppnoppnoclpop
+4)	zggggggpegpnovzgg
+5)	nyrpvqycpaylffffffffffffff
+6)	kkkkkkkkkkwpijccdbl
+7)	tstevttebttktnetitbttti
+8)	gvsvjvvvvvqppvuvcvvvi
+Jest takich slow 8:
